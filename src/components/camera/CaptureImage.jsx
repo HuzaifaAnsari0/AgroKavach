@@ -24,7 +24,7 @@ function CaptureImage() {
         const formData = new FormData();
         formData.append('file', imageFile); // Change 'image' to 'file'
     
-        axios.post("https://b90c-152-52-34-131.ngrok-free.app/predict", formData, {
+        axios.post("http://127.0.0.1:5000/predict", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
