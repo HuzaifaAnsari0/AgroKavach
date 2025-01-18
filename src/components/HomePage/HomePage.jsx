@@ -20,7 +20,9 @@ const handleUploadImageClick = () => {
 const handleReportClick = () => {
   navigate('/report');
 };
-
+const handleStore = () => {
+  navigate('/store');
+};
   return (
     <>
       <Navbar />
@@ -48,6 +50,10 @@ const handleReportClick = () => {
               <div className="p-6 bg-blue-50 rounded-lg shadow-md cursor-pointer" onClick={handleReportClick}>
                 <h3 className="text-xl font-semibold mb-2">{t('view_reports')}</h3>
                 <p className="text-gray-600">{t('view_reports_description')}</p>
+              </div>
+              <div className="p-6 bg-blue-50 rounded-lg shadow-md cursor-pointer" onClick={handleStore}>
+                <h3 className="text-xl font-semibold mb-2">Our Store</h3>
+                <p className="text-gray-600">One stop solution for all your needs</p>
               </div>
             </div>
           </div>

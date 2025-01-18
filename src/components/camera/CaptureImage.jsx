@@ -9,6 +9,7 @@ function CaptureImage() {
     const [step, setStep] = useState(1); // Tracks which step the user is on
     const [selectedImage, setSelectedImage] = useState(null); // Stores the selected/uploaded image
     const [aiResult, setAiResult] = useState(null); // Stores the AI prediction result
+    const [real, setReal] = useState(true); // Stores the AI prediction result
      // Stores the list of diseases identified in the image
 
      const navigate=useNavigate();
@@ -32,7 +33,7 @@ function CaptureImage() {
         .then(response => {
             console.log('Response:', response.data);
             var diseases = response.data.predicted_label;
-            diseases=diseases.replace('_',' ')
+            diseases=diseases.replaceAll('_',' ');
             setDiseases(diseases);
         })
         .catch(error => {
@@ -53,15 +54,32 @@ function CaptureImage() {
         // Call AI API to process the selected image
         // Simulate AI response
         const params = new URLSearchParams();
+        setStep(4); // Move to result step
+        // wait till diseases are set
+
         console.log('Diseases:', diseases);
-        if (diseases == `not_a_leaf`) {
+        if (diseases == `not a leaf`) {
             console.log("Not a leaf");
             params.append('prompt', 'The image is not a leaf. Please upload a leaf image.');
+            setReal(false);
             setAiResult('The image is not a leaf. Please upload a leaf image.');
-            return
+            setStep(4); // Move to result step
+            return;
         } else {
         params.append('prompt', `The plant has the following diseases: ${diseases}, give the prescription, and precautions. Tell me if there is emergency treatment required. Give in only maximum 25 words`);
         }
+        const waitForDiseases = new Promise((resolve) => {
+            const checkDiseases = () => {
+            if (diseases) {
+                resolve();
+            } else {
+                setTimeout(checkDiseases, 100);
+            }
+            };
+            checkDiseases();
+        });
+
+        waitForDiseases.then(() => {
         axios.post("http://localhost:3000/ai/generate", params, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -74,7 +92,7 @@ function CaptureImage() {
         .catch(error => {
             console.error('Error processing image with AI:', error);
         });
-        setStep(4); // Move to result step
+    });
     };
 
     const handleDeleteImage = () => {
@@ -149,21 +167,33 @@ function CaptureImage() {
                 {step === 4 && (
                     <>
                         <div className="w-full max-w-md mt-8 text-center">
-                            <h2 className="text-xl font-bold text-gray-800 mb-4">Identified Diseases: {diseases}</h2>
+                            <h2 className="text-xl font-bold text-gray-800 mb-4">
+                                {
+                                    diseases?
+                                `Identified Diseases: ${diseases}`:
+                                'Processing AI response...'
+                                }
+                                </h2>
                             <ul className="list-disc list-inside text-left text-gray-700">
-                                {aiResult || <div className='toploader'><div className="loadersmall"></div></div>}
+                                {aiResult && (
+                                    <li className="mb-2">
+                                        <span className="font-semibold">AI Prediction:</span> {aiResult}
+                                    </li>
+                                )}
                             </ul>
                         </div>
                         <div className="w-full max-w-md mt-8 text-center">
                             <button
-                                className="w-full mt-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700"
+                                className={`w-full mt-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700 ${real ? '' : 'cursor-not-allowed bg-gray-400 hover:bg-gray-400'}`}
                                 onClick={()=>{
+                                    if(!real) return;
                                     const data=`The plant is suffering from ${diseases}. The answer was ${aiResult}.`
                                     addHistory({role:'user',data:`The plant is suffering from ${diseases}`});
                                     addHistory({role:'model',data:`The answer was ${aiResult}`});
                                     setInitial(`The plant is suffering from ${diseases}. The answer was ${aiResult}.`);
-                                    navigate('/ai');
+                                    navigate(`/ai/${diseases.replaceAll(' ','_')}`);
                                 }}
+
                             >
                                 Chat with AI
                             </button>

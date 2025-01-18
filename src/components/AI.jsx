@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { useParams } from 'react-router-dom';
 
 // Ensure you have your API key in environment variables
 const API_KEY = "AIzaSyAZAm7R1QJNPFFTfqiVD-UDmXvoeu0vzxE";
 
 const ChatApp = () => {
+  const {disease} = useParams();
   const [messages, setMessages] = useState([
-    { role: "user", parts: [{ text: "Hello, After this a farmer will talk to you about his crops and live stocks which are animals now if he asks for anything not related to this you should completely reject him and tell him that he can help only in the field " }] },
-    { role: "model", parts: [{ text: "Great to meet you. What would you like to know?" }] }
+    { role: "user", parts: [
+      { text:
+         `Hello, After this a farmer will talk to you about his crops and live stocks which are animals now if he asks for anything not related to this you should completely reject him and tell him that he can help only in the field. CURRENTLY THE DISEASE IS ${disease}, HELP HIM ACCORDINGLY!`
+        }] },
+    { role: "model", parts: [{ text: `Hello! I am sorry to hear that your crops are suffering from ${disease.replaceAll('_',' ')}. I will do my best to help you with this issue. Please tell me how can I help you regarding this issue.` }] }
   ]);
   const [newMessage, setNewMessage] = useState('');
 
@@ -54,7 +59,7 @@ const ChatApp = () => {
       {/* Chat Window */}
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((msg, index) => (
-          (index === 0 || index=== 1 ) ?
+          (index === 0 ) ?
           <></>:
           <div key={index} className={`mb-4 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-xs px-4 py-2 rounded-lg ${msg.role === 'user' ? 'bg-purple-500 text-white' : 'bg-gray-300 text-black'}`}>

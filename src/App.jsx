@@ -10,8 +10,12 @@ import ChatPage from './components/Chatpage/ChatPage';
 import ResultPage from './components/ResultPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from './actions/context';
+import { useParams } from 'react-router-dom';
 import './i18n';
 import AI from './components/AI';
+import EcomPage from './components/ecomPage';
+import ProductView from './components/ProductView';
+import BuyNow from './components/BuyNow';
 
 const App = () => {
   return (
@@ -28,8 +32,10 @@ const App = () => {
           <Route path="/captureimage" element={<CaptureImage />}/>
           <Route path="/profile" element={<Profile />} />
           <Route path="/report" element={<ResultPage />} />
-          <Route path="/ai" element={<AI/>} />
-
+          <Route path="/ai/:disease" element={<AI />} />
+          <Route path="/store" element={<EcomPage />} />
+          <Route path="/store/productview/:id" element={<ProductView />} />
+          <Route path="/store/buynow" element={<BuyNow />} />
         </Routes>
       </div>
     </Router>

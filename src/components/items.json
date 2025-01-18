@@ -1,0 +1,92 @@
+[
+    {
+      "_id": "1",
+      "name": "Organic Fertilizer",
+      "description": "High-quality organic fertilizer for your crops.",
+      "image1": "/assets/pesti.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 200 },
+        { "size": "5L", "price": 900 }
+      ]
+    },
+    {
+      "_id": "2",
+      "name": "Pesticide",
+      "description": "Effective pesticide to protect your crops.",
+      "image1": "/assets/unnamed.jpg",
+      "bottleOptions": [
+        { "size": "500ml", "price": 150 },
+        { "size": "1L", "price": 250 }
+      ]
+    },
+    {
+      "_id": "3",
+      "name": "Seeds",
+      "description": "High-yield seeds for better crop production.",
+      "image1": "/assets/1.jpeg",
+      "bottleOptions": [
+        { "size": "100g", "price": 50 },
+        { "size": "500g", "price": 200 }
+      ]
+    },
+    {
+      "_id": "4",
+      "name": "Nitrogen Fertilizer",
+      "description": "Boosts plant growth with essential nitrogen.",
+      "image1": "/assets/2.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 250 },
+        { "size": "5L", "price": 1000 }
+      ]
+    },
+    {
+      "_id": "5",
+      "name": "Phosphorus Fertilizer",
+      "description": "Enhances root development and flowering.",
+      "image1": "/assets/3.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 300 },
+        { "size": "5L", "price": 1200 }
+      ]
+    },
+    {
+      "_id": "6",
+      "name": "Potassium Fertilizer",
+      "description": "Improves overall plant health and disease resistance.",
+      "image1": "/assets/5.png",
+      "bottleOptions": [
+        { "size": "1L", "price": 280 },
+        { "size": "5L", "price": 1100 }
+      ]
+    },
+    {
+      "_id": "7",
+      "name": "Calcium Fertilizer",
+      "description": "Strengthens cell walls and prevents blossom end rot.",
+      "image1": "/assets/6.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 260 },
+        { "size": "5L", "price": 1050 }
+      ]
+    },
+    {
+      "_id": "8",
+      "name": "Magnesium Fertilizer",
+      "description": "Essential for chlorophyll production and photosynthesis.",
+      "image1": "/assets/7.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 270 },
+        { "size": "5L", "price": 1080 }
+      ]
+    },
+    {
+      "_id": "9",
+      "name": "Sulfur Fertilizer",
+      "description": "Promotes enzyme activity and protein synthesis.",
+      "image1": "/assets/9.jpeg",
+      "bottleOptions": [
+        { "size": "1L", "price": 240 },
+        { "size": "5L", "price": 960 }
+      ]
+    }
+  ]
