@@ -53,8 +53,15 @@ function CaptureImage() {
         // Call AI API to process the selected image
         // Simulate AI response
         const params = new URLSearchParams();
+        console.log('Diseases:', diseases);
+        if (diseases == `not_a_leaf`) {
+            console.log("Not a leaf");
+            params.append('prompt', 'The image is not a leaf. Please upload a leaf image.');
+            setAiResult('The image is not a leaf. Please upload a leaf image.');
+            return
+        } else {
         params.append('prompt', `The plant has the following diseases: ${diseases}, give the prescription, and precautions. Tell me if there is emergency treatment required. Give in only maximum 25 words`);
-        
+        }
         axios.post("http://localhost:3000/ai/generate", params, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
