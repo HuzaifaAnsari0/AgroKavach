@@ -14,6 +14,15 @@ const HomePage = () => {
     navigate('/register');
 };
 
+const handleUploadImageClick = () => {
+  navigate('/CaptureImage');
+};
+const handleReportClick = () => {
+  navigate('/report');
+};
+
+
+
 
   return (
     <>
@@ -31,7 +40,7 @@ const HomePage = () => {
         <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">{t('dashboard')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              <div className="p-6 bg-blue-50 rounded-lg shadow-md">
+              <div className="p-6 bg-blue-50 rounded-lg shadow-md cursor-pointer" onClick={handleUploadImageClick}>
                 <h3 className="text-xl font-semibold mb-2">{t('upload_image_feature')}</h3>
                 <p className="text-gray-600">{t('upload_image_description')}</p>
               </div>
@@ -39,7 +48,7 @@ const HomePage = () => {
                 <h3 className="text-xl font-semibold mb-2">{t('alerts')}</h3>
                 <p className="text-gray-600">{t('alerts_description')}</p>
               </div>
-              <div className="p-6 bg-blue-50 rounded-lg shadow-md">
+              <div className="p-6 bg-blue-50 rounded-lg shadow-md cursor-pointer" onClick={handleReportClick}>
                 <h3 className="text-xl font-semibold mb-2">{t('view_reports')}</h3>
                 <p className="text-gray-600">{t('view_reports_description')}</p>
               </div>
@@ -51,9 +60,9 @@ const HomePage = () => {
         <div className="container mx-auto px-6 mt-2 mb-14 pb-9">
           <h2 className="text-3xl font-bold text-center text-gray-800 mt-3 mb-8">{t('quick_actions')}</h2>
           <div className="flex justify-center space-x-4">
-            <button className="px-6 py-3 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-300">{t('diagnose_disease')}</button>
+            <button className="px-6 py-3 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-300 cursor-pointer" onClick={handleUploadImageClick}>{t('diagnose_disease')}</button>
             <button className="px-6 py-3 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-300">{t('send_alert')}</button>
-            <button className="px-6 py-3 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-300">{t('check_reports')}</button>
+            <button className="px-6 py-3 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-300 cursor-pointer" onClick={handleReportClick}>{t('check_reports')}</button>
           </div>
         </div>
 
