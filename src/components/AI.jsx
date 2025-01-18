@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Ensure you have your API key in environment variables
-const API_KEY = "AIzaSyBZEzIEI6dlzUVCAQN8jaVxRZxrGXb2YPg";
+const API_KEY = "AIzaSyAZAm7R1QJNPFFTfqiVD-UDmXvoeu0vzxE";
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([
@@ -54,6 +54,8 @@ const ChatApp = () => {
       {/* Chat Window */}
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((msg, index) => (
+          (index === 0 || index=== 1 ) ?
+          <></>:
           <div key={index} className={`mb-4 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-xs px-4 py-2 rounded-lg ${msg.role === 'user' ? 'bg-purple-500 text-white' : 'bg-gray-300 text-black'}`}>
               {msg.parts[0].text}
