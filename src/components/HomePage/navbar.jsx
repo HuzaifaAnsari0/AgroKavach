@@ -17,6 +17,10 @@ function Navbar() {
       }
   },[]);
 
+  const handlehome = () => {
+    navigate('/');
+  };
+
   return (
     <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
       <div className="flex items-center">
@@ -24,7 +28,7 @@ function Navbar() {
         <img
           src="/images/logoPrim.svg" // Replace with the actual path to your logo image in the public folder
           alt="Logo"
-          className="w-10 h-10 mr-3"
+          className="w-10 h-10 mr-3 " onClick={handlehome}
         />
         {/* <div className="font-bold text-blue-800" style={{ fontSize: "1.75rem" }}>AgroShield</div> */}
       </div>
