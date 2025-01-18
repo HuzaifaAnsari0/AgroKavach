@@ -21,9 +21,6 @@ const handleReportClick = () => {
   navigate('/report');
 };
 
-
-
-
   return (
     <>
       <Navbar />
@@ -44,10 +41,10 @@ const handleReportClick = () => {
                 <h3 className="text-xl font-semibold mb-2">{t('upload_image_feature')}</h3>
                 <p className="text-gray-600">{t('upload_image_description')}</p>
               </div>
-              <div className="p-6 bg-blue-50 rounded-lg shadow-md">
+              {/* <div className="p-6 bg-blue-50 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-2">{t('alerts')}</h3>
                 <p className="text-gray-600">{t('alerts_description')}</p>
-              </div>
+              </div> */}
               <div className="p-6 bg-blue-50 rounded-lg shadow-md cursor-pointer" onClick={handleReportClick}>
                 <h3 className="text-xl font-semibold mb-2">{t('view_reports')}</h3>
                 <p className="text-gray-600">{t('view_reports_description')}</p>

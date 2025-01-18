@@ -69,7 +69,7 @@ const Profile = () => {
         </button>
         <h1 className="text-lg font-semibold text-gray-900">{editMode ? t('edit_profile') : t('my_profile')}</h1>
         {editMode && (
-          <button className="text-gray-600" onClick={saveProfile}>
+          <button className="" onClick={saveProfile}>
             {t('save')}
           </button>
         )}
