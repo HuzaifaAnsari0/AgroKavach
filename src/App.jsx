@@ -1,16 +1,15 @@
 // src/App.jsx
-import React from 'react';
+// import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import Login from './components/Login/login';
 import Register from './components/Register/register';
 import CaptureImage from './components/camera/CaptureImage';
 import Profile from './components/Profile/Profile';
-import ChatPage from './components/Chatpage/ChatPage';
+import Recommend from './components/Recommend/Recommend';
 import ResultPage from './components/ResultPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from './actions/context';
-import { useParams } from 'react-router-dom';
 import './i18n';
 import AI from './components/AI';
 import EcomPage from './components/ecomPage';
@@ -26,7 +25,7 @@ const App = () => {
         {/* Define your routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/chat" element={<Recommend />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/captureimage" element={<CaptureImage />}/>
