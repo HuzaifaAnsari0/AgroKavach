@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import Footer from '../HomePage/Footer';
 import Navbar from '../HomePage/navbar';
 import { useTranslation } from 'react-i18next';
@@ -54,7 +53,7 @@ const Recommend = () => {
 
         {/* Crop prediction form */}
         <Container className="d-flex justify-content-center">
-          <div className="bg-white p-5 rounded shadow-lg w-50">
+          <div className="bg-white p-4 rounded shadow-lg w-100" style={{ maxWidth: '500px' }}>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="location">
                 <Form.Label>{t('Location')}</Form.Label>
