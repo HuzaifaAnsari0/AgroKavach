@@ -75,7 +75,10 @@ const ProductView = () => {
         </div>
       </div>
     </section>
+    <>
     <Footer />
+    </>
+    
     </>
   );
 };
