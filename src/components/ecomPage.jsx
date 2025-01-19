@@ -16,7 +16,7 @@ const EcomPage = () => {
 
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (selectedCategory === 'All' || product.category === selectedCategory)
+    (selectedCategory === 'All' )
   );
 
   const categories = ['All', ...new Set(products.map(product => product.category))];
