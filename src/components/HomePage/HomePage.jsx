@@ -105,7 +105,7 @@ const HomePage = () => {
             onClick={handleReportClick}
               className="bg-yellow-50 text-yellow-600 border border-yellow-200 hover:bg-yellow-100 font-bold py-2 px-4 rounded-full transition duration-300"
             >
-              {t('recommendation')}
+              {t('Crop Recommendation')}
             </button>
             <button 
               onClick={handleStore}
