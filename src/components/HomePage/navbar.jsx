@@ -21,6 +21,9 @@ function Navbar() {
     navigate('/');
   };
 
+const farmer = localStorage.getItem('user');
+const photoURL = farmer ? farmer['photoURL'] : '';
+
   return (
     <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
       <div className="flex items-center">
@@ -37,9 +40,9 @@ function Navbar() {
         <LanguageSwitcher />
         {/* Profile Picture */}
 
+      
         {isLogin ? 
-          <img
-            src={JSON.parse(localStorage.getItem('user'))['photoURL']} // Replace with profile image URL
+          <img src={photoURL || 'default-image-url.jpg'} // Replace with profile image URL
             alt="Profile"
             className="rounded-full w-10 h-10 cursor-pointer"
             onClick={() => navigate('/profile')}
