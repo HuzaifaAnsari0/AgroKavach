@@ -22,7 +22,7 @@ const EcomPage = () => {
   const categories = ['All', ...new Set(products.map(product => product.category))];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50  mb-6" >
       <Navbar />
       <motion.div 
         initial={{ opacity: 0 }}
