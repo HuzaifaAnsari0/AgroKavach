@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FaUpload, FaBell, FaChartBar, FaStore } from 'react-icons/fa';
+import { FaUpload, FaBell, FaChartBar, FaStore, FaLightbulb } from 'react-icons/fa';
 import Navbar from './navbar';
 import Footer from './Footer';
 
@@ -11,7 +11,7 @@ const HomePage = () => {
   const { t } = useTranslation();
 
   const handleGetStarted = () => {
-    navigate('/register');
+    navigate('/login');
   };
 
   const handleUploadImageClick = () => {
@@ -24,6 +24,10 @@ const HomePage = () => {
 
   const handleStore = () => {
     navigate('/store');
+  };
+
+  const handlerecommned = () => {
+    navigate('/chat');
   };
 
   const fadeInUp = {
@@ -62,7 +66,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: FaUpload, title: 'upload_image_feature', description: 'upload_image_description', action: handleUploadImageClick, actionText: 'diagnose_disease' },
-              // { icon: FaBell, title: 'alerts', description: 'alerts_description', action: () => {}, actionText: 'send_alert' },
+               { icon: FaLightbulb, title: 'Recommendations', description: 'alerts_description', action: handlerecommned, actionText: 'Crop Prediction' },
               { icon: FaChartBar, title: 'view_reports', description: 'view_reports_description', action: handleReportClick, actionText: 'check_reports' },
               { icon: FaStore, title: 'Our Store', description: 'One stop solution for all your needs', action: handleStore, actionText: 'Visit Store' }
             ].map((item, index) => (
@@ -98,15 +102,16 @@ const HomePage = () => {
               {t('diagnose_disease')}
             </button>
             <button 
+            onClick={handleReportClick}
               className="bg-yellow-50 text-yellow-600 border border-yellow-200 hover:bg-yellow-100 font-bold py-2 px-4 rounded-full transition duration-300"
             >
               {t('recommendation')}
             </button>
             <button 
-              onClick={handleReportClick}
+              onClick={handleStore}
               className="bg-green-50 text-green-600 border border-green-200 hover:bg-green-100 font-bold py-2 px-4 rounded-full transition duration-300"
             >
-              {t('check_reports')}
+              {t('Store')}
             </button>
           </div>
         </motion.section>
