@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useParams } from 'react-router-dom';
-
+import axios from 'axios';
+import { useEffect } from 'react';
 // Ensure you have your API key in environment variables
 const API_KEY = "AIzaSyAZAm7R1QJNPFFTfqiVD-UDmXvoeu0vzxE";
 
 const ChatApp = () => {
   const {disease} = useParams();
+  const [fertilizer, setFertilizer] = useState({});
   const [messages, setMessages] = useState([
     { role: "user", parts: [
       { text:
@@ -15,6 +17,24 @@ const ChatApp = () => {
     { role: "model", parts: [{ text: `Hello! I am sorry to hear that your crops are suffering from ${disease.replaceAll('_',' ')}. I will do my best to help you with this issue. Please tell me how can I help you regarding this issue.` }] }
   ]);
   const [newMessage, setNewMessage] = useState('');
+
+  // post to backend to get the recommended fertilizer
+  const handleFertilizer = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:3000/ai/best-fertilizer", {
+        disease: disease
+      });
+      console.log('Response:', response.data);
+      setFertilizer(response.data);
+    } catch (error) {
+      console.error('Error fetching AI response:', error);
+    }
+  };
+
+  useEffect(() => {
+    handleFertilizer();
+  }, []);
+  
 
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
@@ -61,11 +81,30 @@ const ChatApp = () => {
         {messages.map((msg, index) => (
           (index === 0 ) ?
           <></>:
+          (
+          <>
           <div key={index} className={`mb-4 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-xs px-4 py-2 rounded-lg ${msg.role === 'user' ? 'bg-purple-500 text-white' : 'bg-gray-300 text-black'}`}>
               {msg.parts[0].text}
             </div>
           </div>
+
+            {index === 1 ?
+                        <div className="mb-4 flex justify-start" onClick={
+              () => {
+                /*redirect to store page*/
+                window.location.href = `/store/productview/${fertilizer.id}`;
+              }
+                        }>
+              <div className="max-w-xs px-2 py-1 rounded bg-green-300 text-black">
+                Recommended Fertilizer: {fertilizer.fertilizer || 'Loading...'}
+              </div>
+            </div>
+            :<></>
+}
+          
+          </>
+          )
         ))}
       </div>
 

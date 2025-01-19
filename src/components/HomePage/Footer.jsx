@@ -20,7 +20,7 @@ function Footer() {
                     </Link>
                     <Link to="/chat" className="text-green-600 hover:text-green-700 flex flex-col items-center">
                         <img src="./public/images/chats.svg" alt="Chats" />
-                        <span className="mt-1 text-xs text-gray-600">Chats</span>
+                        <span className="mt-1 text-xs text-gray-600">Recommendations</span>
                     </Link>
                     <Link to="/report" className="text-green-600 hover:text-green-700 flex flex-col items-center">
                         <img src="./public/images/reports.svg" alt="Reports" />

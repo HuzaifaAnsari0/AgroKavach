@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
-import Login from './components/Login/Login';
+import Login from './components/Login/login';
 import Register from './components/Register/register';
 import CaptureImage from './components/camera/CaptureImage';
 import Profile from './components/Profile/Profile';
