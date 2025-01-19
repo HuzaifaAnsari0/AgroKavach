@@ -13,7 +13,7 @@ function Login() {
     const [isFarmer, setIsFarmer] = useState(true); // State to manage toggle
     const navigate = useNavigate();
 
-    const { isLogin, setIsLogin, setName, setUserDetails } = useCart();
+    const { isLogin, setIsLogin, setName, user, setUserDetails } = useCart();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,7 +25,14 @@ function Login() {
 
             if (response.status === 200) {
                 const data = response.data;
+                // console.log('Login response:', data);
+                setIsLogin(true);
+                setName(data.displayName);
+                setUserDetails(data);
+                console.log('Login response:', data);
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('user',JSON.stringify(data.farmer));
+                console.log('Login successful:', data);
                 navigate('/');
             } else {
                 alert('Login failed. Please check your credentials.');
@@ -44,7 +51,7 @@ function Login() {
             setName(user.displayName);
             setUserDetails(user);
             const uid = user.uid;
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('user', user);
             console.log("Google sign-in success:", user);
             navigate("/");
         } catch (error) {
